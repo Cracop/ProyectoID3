@@ -11,8 +11,8 @@ valores = y_train.unique()
 #print(dftrain.head())
 
 class Nodo:
-    def __init__(self, nombre, padre, arista=None):
-        self.nombre=nombre
+    def __init__(self,valor, padre, arista=None):
+        self.valor=valor
         self.padre=padre
         self.hijos = []
         self.arista=arista #Es como der e izq en un bst
@@ -28,29 +28,36 @@ class Nodo:
         return None 
 
 
+class ArbolID3:
+    def __init__(self):
+        self.root=None
+        self.atributos=None
 
-def entropia(atributo):
-    entropia = 0
+
+    def entropia(self,atributo):
+        entropia = 0
    
-    for valor in dftrain[atributo].unique():
+        for valor in dftrain[atributo].unique():
         
-        filasQueImportan = dftrain[dftrain[atributo]==valor] 
-        n = 0
-        print(len(filasQueImportan.index), "/", dftrain[atributo].size)
-        proba1 = len(filasQueImportan.index)/dftrain[atributo].size
+            filasQueImportan = dftrain[dftrain[atributo]==valor] 
+            n = 0
+            print(len(filasQueImportan.index), "/", dftrain[atributo].size)
+            proba1 = len(filasQueImportan.index)/dftrain[atributo].size
         
-        for resultado in filasQueImportan[ycol].unique():
+            for resultado in filasQueImportan[ycol].unique():
         
-            resultadosQueImportan = filasQueImportan[filasQueImportan[ycol]==resultado]
-            print("  ", resultado, len(resultadosQueImportan.index), "/", len(filasQueImportan.index))
-            proba2 = len(resultadosQueImportan.index)/len(filasQueImportan.index)
-            n += proba2*math.log2(proba2)
+                resultadosQueImportan = filasQueImportan[filasQueImportan[ycol]==resultado]
+                print("  ", resultado, len(resultadosQueImportan.index), "/", len(filasQueImportan.index))
+                proba2 = len(resultadosQueImportan.index)/len(filasQueImportan.index)
+                n += proba2*math.log2(proba2)
         
-        entropia += proba1*(-1)*(n)
-    print(atributo, entropia)
+            entropia += proba1*(-1)*(n)
+        print(atributo, entropia)
 
+
+ic = ArbolID3()
 for atributo in dftrain.columns:
-    entropia(atributo)
+    ic.entropia(atributo)
 #entropia('anxiety')
 #entropiaDelDataSet("prognosis")
 #print(dftrain.columns)
