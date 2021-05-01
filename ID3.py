@@ -34,6 +34,7 @@ class ArbolID3:
         self.atributos=None
 
 
+
     def entropia(self,atributo):
         entropia = 0
    
@@ -41,23 +42,38 @@ class ArbolID3:
         
             filasQueImportan = dftrain[dftrain[atributo]==valor] 
             n = 0
-            print(len(filasQueImportan.index), "/", dftrain[atributo].size)
+            #print(len(filasQueImportan.index), "/", dftrain[atributo].size)
             proba1 = len(filasQueImportan.index)/dftrain[atributo].size
         
             for resultado in filasQueImportan[ycol].unique():
         
                 resultadosQueImportan = filasQueImportan[filasQueImportan[ycol]==resultado]
-                print("  ", resultado, len(resultadosQueImportan.index), "/", len(filasQueImportan.index))
+                #print("  ", resultado, len(resultadosQueImportan.index), "/", len(filasQueImportan.index))
                 proba2 = len(resultadosQueImportan.index)/len(filasQueImportan.index)
                 n += proba2*math.log2(proba2)
         
             entropia += proba1*(-1)*(n)
-        print(atributo, entropia)
+        return entropia
+
+    def crearNodo(self, valor, padre, arista=None):
+        return Nodo(valor, padre, arista)
+
+    def seleccionaMejorAtributo(self, df):
+        atri = list()
+        entropias = list()
+        for atributo in  df.columns:
+            if atributo != ycol:
+                atri.append(atributo)
+                entropias.append(self.entropia(atributo))
+            print(entropias, atri)
+        return atri[np.argmin(entropias)]
+        
 
 
 ic = ArbolID3()
-for atributo in dftrain.columns:
-    ic.entropia(atributo)
+#for atributo in dftrain.columns:
+#    ic.entropia(atributo)
+print(ic.seleccionaMejorAtributo(dftrain))
 #entropia('anxiety')
 #entropiaDelDataSet("prognosis")
 #print(dftrain.columns)
