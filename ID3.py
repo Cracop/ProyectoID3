@@ -2,9 +2,10 @@ import pandas as pd
 import numpy as np
 import itertools 
 import math
+import time 
 
-ycol = "lluvia"
-dftrain = pd.read_csv('prueba.csv')
+ycol = "prognosis"
+dftrain = pd.read_csv('Training.csv')
 y_train = dftrain[ycol] 
 
 valores = y_train.unique() 
@@ -89,7 +90,7 @@ class ArbolID3:
 
     def encontrarCaminos(self, nodoActual, atributos, ycol, dftrain):
         caminos = dftrain[nodoActual.valor].unique()
-        print("nodoCreado")
+        #print("nodoCreado")
         for camino in caminos:
             dfAux = dftrain[dftrain[nodoActual.valor]==camino]
             #print(nodoActual.valor, "=",camino)
@@ -117,7 +118,7 @@ class ArbolID3:
 
     #Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
 def pprint_tree(node, file=None, _prefix="", _last=True):
-    print(_prefix, "`- " if _last else "|- ", node.valor, sep="", file=file)
+    print(_prefix, "`- " if _last else "|- ", node.arista if node.arista != None else "","-> ",node.valor, sep="", file=file)
     _prefix += "   " if _last else "|  "
     child_count = len(node.hijos)
     for i, child in enumerate(node.hijos):
@@ -129,9 +130,11 @@ ic = ArbolID3()
 #    ic.entropia(atributo)
 #print(ic.seleccionaMejorAtributo(dftrain))
 #print(ic.entropia('vomiting'))
+inicio = time.time()
 ic.entrenar(dftrain,ycol)
+print("--- %s segundos ---" % (time.time() - inicio))
 print(" ")
 #ic.verArbol()
 pprint_tree(ic.root)
 #entropiaDelDataSet("prognosis")
-#print(dftrain.columns)
+#print(dftrain.columns)print("--- %s segundos ---" % (time.time() - inicio))
