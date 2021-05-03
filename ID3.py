@@ -3,8 +3,8 @@ import numpy as np
 import itertools 
 import math
 
-ycol = 'prognosis'
-dftrain = pd.read_csv('Testing.csv')
+ycol = "lluvia"
+dftrain = pd.read_csv('prueba.csv')
 y_train = dftrain[ycol] 
 
 valores = y_train.unique() 
@@ -31,6 +31,11 @@ class Nodo:
         print("\t" * level + repr(self.valor))
         for hijo in self.hijos:
             hijo.other_name(level+1)
+    
+    def imprimeHijos(self, level=0):
+        print("\t" * level + self.valor)
+        for hijo in self.hijos:
+            hijo.imprimeHijos(level+1)
 
 
 class ArbolID3:
@@ -62,6 +67,7 @@ class ArbolID3:
         return Nodo(valor, padre, arista)
 
     def seleccionaMejorAtributo(self, df, atributos, ycol):
+        #print(atributos)
         atri = list()
         entropias = list()
         for atributo in  atributos:
@@ -78,13 +84,47 @@ class ArbolID3:
         root = self.seleccionaMejorAtributo(dftrain,self.atributos, ycol)
         self.atributos.remove(root)
         self.root=self.crearNodo(root, None)
-        self.crearHijos(self.root, self, atributos, ycol, dftrain)
-    
-    def crearHijos(self, nodoActual, atributos, ycol, dftrain):
-        valoresUnicos = dftrain[nodoActual].unique()        
+        #self.crearHijos(self.root, self.atributos, ycol, dftrain)
+        self.encontrarCaminos(self.root, self.atributos, ycol, dftrain)
+        
+
+    def encontrarCaminos(self, nodoActual, atributos, ycol, dftrain):
+        caminos = dftrain[nodoActual.valor].unique()
+        for camino in caminos:
+            dfAux = dftrain[dftrain[nodoActual.valor]==camino]
+            self.crearHijos(nodoActual, camino, ycol, dfAux)
+        
+
+    def crearHijos(self, nodoActual, camino, ycol, df):
+        resultados = df[ycol].unique()
+        if len(resultados)==1: #Caso base
+            nodoActual.addHijo(self.crearNodo(resultados[0], nodoActual, camino))
+            
+            return
+        else:
+            print(df)
+
+
+    def crearHifjos(self, nodoActual, atributos, ycol, dftrain):
+        print("Lista de atributos y valor actual",atributos, nodoActual.valor)
+        result = dftrain[ycol].unique() #Los resultados
+        valoresUnicos = dftrain[nodoActual.valor].unique() #Los caminos que tengo
+        for arista in valoresUnicos:
+            dfAux = dftrain[dftrain[nodoActual.valor]==arista]
+            print(dfAux)
+            atributosAux=atributos.copy()
+            print("atributosAux: ", atributosAux)
+            nodo = self.seleccionaMejorAtributo(dfAux,atributos, ycol)
+            print("Siguiente mejor atributo",nodo)
+            atributosAux.remove(nodo)
+            nodo = self.crearNodo(nodo, nodoActual, arista)
+            nodoActual.addHijo(nodo)
+            #print(arista)
+            self.crearHijos(nodoActual, atributosAux, ycol, dfAux)
+
 
     def verArbol(self):
-        self.root.other_name
+        self.root.imprimeHijos()
 
     
 
@@ -97,6 +137,6 @@ ic = ArbolID3()
 #print(ic.seleccionaMejorAtributo(dftrain))
 #print(ic.entropia('vomiting'))
 ic.entrenar(dftrain,ycol)
-#ic.verArbol()
+ic.verArbol()
 #entropiaDelDataSet("prognosis")
 #print(dftrain.columns)
