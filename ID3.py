@@ -27,17 +27,12 @@ class Nodo:
                 return hijo
         return None 
     
-    def other_name(self, level=0):
-        print("\t" * level + repr(self.valor))
-        for hijo in self.hijos:
-            hijo.other_name(level+1)
-    
     def imprimeHijos(self, level=0):
         if self.arista != None:
             print("\t" * level + self.arista + " -- "+self.valor)
         else:
             print("\t" * level + self.valor)
-        
+        #print(self.hijos)
         for hijo in self.hijos:
             hijo.imprimeHijos(level+1)
 
@@ -115,26 +110,6 @@ class ArbolID3:
             nodoActual.addHijo(self.crearNodo(resultados[0], nodoActual, camino))
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
             #print(df)
-
-
-
-    def crearHifjos(self, nodoActual, atributos, ycol, dftrain):
-        print("Lista de atributos y valor actual",atributos, nodoActual.valor)
-        result = dftrain[ycol].unique() #Los resultados
-        valoresUnicos = dftrain[nodoActual.valor].unique() #Los caminos que tengo
-        for arista in valoresUnicos:
-            dfAux = dftrain[dftrain[nodoActual.valor]==arista]
-            print(dfAux)
-            atributosAux=atributos.copy()
-            print("atributosAux: ", atributosAux)
-            nodo = self.seleccionaMejorAtributo(dfAux,atributos, ycol)
-            print("Siguiente mejor atributo",nodo)
-            atributosAux.remove(nodo)
-            nodo = self.crearNodo(nodo, nodoActual, arista)
-            nodoActual.addHijo(nodo)
-            #print(arista)
-            self.crearHijos(nodoActual, atributosAux, ycol, dfAux)
-
 
     def verArbol(self):
         self.root.imprimeHijos()
