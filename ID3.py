@@ -36,7 +36,7 @@ class Nodo:
         for hijo in self.hijos:
             hijo.imprimeHijos(level+1)
 
-
+    
 class ArbolID3:
     def __init__(self):
         self.root=None
@@ -89,9 +89,11 @@ class ArbolID3:
 
     def encontrarCaminos(self, nodoActual, atributos, ycol, dftrain):
         caminos = dftrain[nodoActual.valor].unique()
+        print("nodoCreado")
         for camino in caminos:
             dfAux = dftrain[dftrain[nodoActual.valor]==camino]
             #print(nodoActual.valor, "=",camino)
+            del dfAux[nodoActual.valor]
             self.crearHijos(nodoActual, camino, ycol, dfAux, atributos)
         
 
@@ -113,17 +115,23 @@ class ArbolID3:
     def verArbol(self):
         self.root.imprimeHijos()
 
+    #Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
+def pprint_tree(node, file=None, _prefix="", _last=True):
+    print(_prefix, "`- " if _last else "|- ", node.valor, sep="", file=file)
+    _prefix += "   " if _last else "|  "
+    child_count = len(node.hijos)
+    for i, child in enumerate(node.hijos):
+        _last = i == (child_count - 1)
+        pprint_tree(child, file, _prefix, _last)
     
-
-        
-
-
 ic = ArbolID3()
 #for atributo in dftrain.columns:
 #    ic.entropia(atributo)
 #print(ic.seleccionaMejorAtributo(dftrain))
 #print(ic.entropia('vomiting'))
 ic.entrenar(dftrain,ycol)
-ic.verArbol()
+print(" ")
+#ic.verArbol()
+pprint_tree(ic.root)
 #entropiaDelDataSet("prognosis")
 #print(dftrain.columns)
