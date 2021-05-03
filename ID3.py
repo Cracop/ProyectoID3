@@ -3,8 +3,8 @@ import numpy as np
 import itertools 
 import math
 
-ycol = 'lluvia'
-dftrain = pd.read_csv('prueba.csv')
+ycol = 'prognosis'
+dftrain = pd.read_csv('Testing.csv')
 y_train = dftrain[ycol] 
 
 valores = y_train.unique() 
@@ -26,6 +26,11 @@ class Nodo:
             if hijo.arista==arista:
                 return hijo
         return None 
+    
+    def other_name(self, level=0):
+        print("\t" * level + repr(self.valor))
+        for hijo in self.hijos:
+            hijo.other_name(level+1)
 
 
 class ArbolID3:
@@ -33,9 +38,7 @@ class ArbolID3:
         self.root=None
         self.atributos=None
 
-
-
-    def entropia(self,atributo):
+    def entropia(self,atributo, ycol):
         entropia = 0
    
         for valor in dftrain[atributo].unique():
@@ -58,22 +61,42 @@ class ArbolID3:
     def crearNodo(self, valor, padre, arista=None):
         return Nodo(valor, padre, arista)
 
-    def seleccionaMejorAtributo(self, df):
+    def seleccionaMejorAtributo(self, df, atributos, ycol):
         atri = list()
         entropias = list()
-        for atributo in  df.columns:
+        for atributo in  atributos:
             if atributo != ycol:
                 atri.append(atributo)
-                entropias.append(self.entropia(atributo))
-            print(entropias, atri)
+                entropias.append(self.entropia(atributo, ycol))
+        #print(entropias, atri)
         return atri[np.argmin(entropias)]
+
+    def entrenar(self, dftrain, ycol):
+        self.atributos=list(dftrain.columns) #Creo una lista de los atributos (para pasarlos luego)
+        self.atributos.remove(ycol) #Para quitar la columna que me importa
+        #Busco el atributo con la menor entropía y la vuelvo raíz
+        root = self.seleccionaMejorAtributo(dftrain,self.atributos, ycol)
+        self.atributos.remove(root)
+        self.root=self.crearNodo(root, None)
+        self.crearHijos(self.root, self, atributos, ycol, dftrain)
+    
+    def crearHijos(self, nodoActual, atributos, ycol, dftrain):
+        valoresUnicos = dftrain[nodoActual].unique()        
+
+    def verArbol(self):
+        self.root.other_name
+
+    
+
         
 
 
 ic = ArbolID3()
 #for atributo in dftrain.columns:
 #    ic.entropia(atributo)
-print(ic.seleccionaMejorAtributo(dftrain))
-#entropia('anxiety')
+#print(ic.seleccionaMejorAtributo(dftrain))
+#print(ic.entropia('vomiting'))
+ic.entrenar(dftrain,ycol)
+#ic.verArbol()
 #entropiaDelDataSet("prognosis")
 #print(dftrain.columns)
