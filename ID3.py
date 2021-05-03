@@ -96,6 +96,8 @@ class ArbolID3:
         caminos = dftrain[nodoActual.valor].unique()
         for camino in caminos:
             dfAux = dftrain[dftrain[nodoActual.valor]==camino]
+            #del dfAux[nodoActual.valor]
+            print(atributos)
             self.crearHijos(nodoActual, camino, ycol, dfAux, atributos)
         
 
@@ -107,12 +109,12 @@ class ArbolID3:
             return
         else:
             atributosAux=atributos.copy()
-            #print(atributosAux, nodoActual.valor)
-            #atributosAux.remove(nodoActual.valor)
             nodo = self.seleccionaMejorAtributo(df,atributosAux, ycol)
+            atributosAux.remove(nodo)
             nodo = self.crearNodo(nodo, nodoActual, camino)
+            nodoActual.addHijo(self.crearNodo(resultados[0], nodoActual, camino))
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
-            print(df)
+            #print(df)
 
 
 
