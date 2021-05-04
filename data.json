@@ -1,0 +1,51 @@
+{
+    "valor": "cielo",
+    "arista": null,
+    "padre": null,
+    "hijos": [
+        {
+            "valor": "F",
+            "arista": "L",
+            "padre": "cielo",
+            "hijos": []
+        },
+        {
+            "valor": "baro",
+            "arista": "N",
+            "padre": "cielo",
+            "hijos": [
+                {
+                    "valor": "T",
+                    "arista": "S",
+                    "padre": "baro",
+                    "hijos": []
+                },
+                {
+                    "valor": "T",
+                    "arista": "E",
+                    "padre": "baro",
+                    "hijos": []
+                },
+                {
+                    "valor": "viento",
+                    "arista": "B",
+                    "padre": "baro",
+                    "hijos": [
+                        {
+                            "valor": "T",
+                            "arista": "N",
+                            "padre": "viento",
+                            "hijos": []
+                        },
+                        {
+                            "valor": "F",
+                            "arista": "S",
+                            "padre": "viento",
+                            "hijos": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

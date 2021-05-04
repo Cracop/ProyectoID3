@@ -3,9 +3,10 @@ import numpy as np
 import itertools 
 import math
 import time 
+import json
 
-ycol = "prognosis"
-dftrain = pd.read_csv('Testing.csv')
+ycol = "lluvia"
+dftrain = pd.read_csv('prueba.csv')
 y_train = dftrain[ycol] 
 
 valores = y_train.unique() 
@@ -112,7 +113,7 @@ class ArbolID3:
             #     nodoActual.padre.hijos.clear()
             #     nodo.padre=nodoActual.padre
             #     nodoActual.padre.addHijo(nodo)
-            #
+            #print(df)
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
             #print(df)
 
@@ -124,6 +125,40 @@ def pprint_tree(node, file=None, _prefix="", _last=True):
     for i, child in enumerate(node.hijos):
         _last = i == (child_count - 1)
         pprint_tree(child, file, _prefix, _last)
+
+def recortarArbol(nodo):
+    if len(nodo.hijos) == 0:
+        return
+    else: 
+        for hijo in nodo.hijos:
+            if len(hijo.hijos) == 1:
+                nieto = hijo.hijos[0]
+                nieto.arista = hijo.arista
+                nieto.padre=hijo.padre
+                padre.hijos.clear()
+                padre.addHijo(nieto)
+                recortarArbol(nieto)
+
+
+def crearArbolDiccionario(nodo):
+    if nodo == None:
+        return
+    node = dict()
+    node["valor"]=nodo.valor
+    node["arista"]=nodo.arista
+    if nodo.padre != None:
+        node["padre"]=nodo.padre.valor
+    else:
+        node["padre"]=nodo.padre
+    node["hijos"]=[]
+    for hijo in nodo.hijos:
+        node["hijos"].append(crearArbolDiccionario(hijo))
+    return node
+
+def exportarArbol():
+    pass
+    
+
     
 ic = ArbolID3()
 #for atributo in dftrain.columns:
@@ -136,5 +171,11 @@ print("--- %s segundos ---" % (time.time() - inicio))
 print(" ")
 #ic.verArbol()
 pprint_tree(ic.root)
+arbol = crearArbolDiccionario(ic.root)
+with open('data.json', 'w') as fp:
+    json.dump(arbol, fp,  indent=4)
+print(arbol)
+#recortarArbol(ic.root)
+#pprint_tree(ic.root)
 #entropiaDelDataSet("prognosis")
 #print(dftrain.columns)
