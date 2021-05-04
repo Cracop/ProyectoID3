@@ -126,21 +126,7 @@ def pprint_tree(node, file=None, _prefix="", _last=True):
         _last = i == (child_count - 1)
         pprint_tree(child, file, _prefix, _last)
 
-def recortarArbol(nodo):
-    if len(nodo.hijos) == 0:
-        return
-    else: 
-        for hijo in nodo.hijos:
-            if len(hijo.hijos) == 1:
-                nieto = hijo.hijos[0]
-                nieto.arista = hijo.arista
-                nieto.padre=hijo.padre
-                padre.hijos.clear()
-                padre.addHijo(nieto)
-                recortarArbol(nieto)
-
-
-def crearArbolDiccionario(nodo):
+def crearArbolDiccionario(nodo): #Creo un megadiccionario
     if nodo == None:
         return
     node = dict()
@@ -155,27 +141,19 @@ def crearArbolDiccionario(nodo):
         node["hijos"].append(crearArbolDiccionario(hijo))
     return node
 
-def exportarArbol():
+def exportarArbol(nodo):
+    arbol = crearArbolDiccionario(nodo)
+    with open('data.json', 'w') as fp:
+        json.dump(arbol, fp,  indent=4)
     pass
     
 
     
 ic = ArbolID3()
-#for atributo in dftrain.columns:
-#    ic.entropia(atributo)
-#print(ic.seleccionaMejorAtributo(dftrain))
-#print(ic.entropia('vomiting'))
 inicio = time.time()
 ic.entrenar(dftrain,ycol)
 print("--- %s segundos ---" % (time.time() - inicio))
 print(" ")
-#ic.verArbol()
 pprint_tree(ic.root)
-arbol = crearArbolDiccionario(ic.root)
-with open('data.json', 'w') as fp:
-    json.dump(arbol, fp,  indent=4)
-print(arbol)
-#recortarArbol(ic.root)
-#pprint_tree(ic.root)
-#entropiaDelDataSet("prognosis")
-#print(dftrain.columns)
+exportarArbol(ic.root)
+
