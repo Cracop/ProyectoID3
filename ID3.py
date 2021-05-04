@@ -5,7 +5,7 @@ import math
 import time 
 
 ycol = "prognosis"
-dftrain = pd.read_csv('Training.csv')
+dftrain = pd.read_csv('Testing.csv')
 y_train = dftrain[ycol] 
 
 valores = y_train.unique() 
@@ -37,7 +37,6 @@ class Nodo:
         for hijo in self.hijos:
             hijo.imprimeHijos(level+1)
 
-    
 class ArbolID3:
     def __init__(self):
         self.root=None
@@ -86,7 +85,6 @@ class ArbolID3:
         self.root=self.crearNodo(root, None)
         #self.crearHijos(self.root, self.atributos, ycol, dftrain)
         self.encontrarCaminos(self.root, self.atributos, ycol, dftrain)
-        
 
     def encontrarCaminos(self, nodoActual, atributos, ycol, dftrain):
         caminos = dftrain[nodoActual.valor].unique()
@@ -97,7 +95,6 @@ class ArbolID3:
             del dfAux[nodoActual.valor]
             self.crearHijos(nodoActual, camino, ycol, dfAux, atributos)
         
-
     def crearHijos(self, nodoActual, camino, ycol, df, atributos):
         resultados = df[ycol].unique()
         if len(resultados)==1: #Caso base
@@ -110,13 +107,16 @@ class ArbolID3:
             atributosAux.remove(nodo)
             nodo = self.crearNodo(nodo, nodoActual, camino)
             nodoActual.addHijo(nodo)
+            #
+            # if nodoActual.padre != None and len(nodoActual.padre.hijos) == 1:
+            #     nodoActual.padre.hijos.clear()
+            #     nodo.padre=nodoActual.padre
+            #     nodoActual.padre.addHijo(nodo)
+            #
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
             #print(df)
 
-    def verArbol(self):
-        self.root.imprimeHijos()
-
-    #Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
+#Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
 def pprint_tree(node, file=None, _prefix="", _last=True):
     print(_prefix, "`- " if _last else "|- ", node.arista if node.arista != None else "","-> ",node.valor, sep="", file=file)
     _prefix += "   " if _last else "|  "
@@ -137,4 +137,4 @@ print(" ")
 #ic.verArbol()
 pprint_tree(ic.root)
 #entropiaDelDataSet("prognosis")
-#print(dftrain.columns)print("--- %s segundos ---" % (time.time() - inicio))
+#print(dftrain.columns)
