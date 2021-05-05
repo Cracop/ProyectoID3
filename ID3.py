@@ -16,7 +16,7 @@ class Nodo:
     def addHijo(self, hijo):
         self.hijos.append(hijo)
 
-    def buscaHijo(self, arista): #Si lle
+    def buscaHijo(self, arista): #Me regresa el hijo en el camino que diga
         for hijo in self.hijos:
             if hijo.arista==arista:
                 return hijo
@@ -27,7 +27,7 @@ class ArbolID3:
         self.root=None
         self.atributos=None
 
-    def entropia(self,atributo, ycol):
+    def entropia(self,atributo, ycol): #Calcula la entropía de un solo atributo
         entropia = 0
    
         for valor in dftrain[atributo].unique():
@@ -48,7 +48,7 @@ class ArbolID3:
     def crearNodo(self, valor, padre, arista=None):
         return Nodo(valor, padre, arista)
 
-    def seleccionaMejorAtributo(self, df, atributos, ycol):
+    def seleccionaMejorAtributo(self, df, atributos, ycol): #Selecciono el atributo con menor entropía que sea mayor a cero
         atri = list()
         entropias = list()
         for atributo in  atributos:
@@ -67,7 +67,7 @@ class ArbolID3:
         #self.crearHijos(self.root, self.atributos, ycol, dftrain)
         self.encontrarCaminos(self.root, self.atributos, ycol, dftrain)
 
-    def encontrarCaminos(self, nodoActual, atributos, ycol, dftrain):
+    def encontrarCaminos(self, nodoActual, atributos, ycol, dftrain): #Encuentro los caminos que salen de cada nodo
         caminos = dftrain[nodoActual.valor].unique()
         #print("nodoCreado")
         for camino in caminos:
@@ -76,7 +76,7 @@ class ArbolID3:
             del dfAux[nodoActual.valor]
             self.crearHijos(nodoActual, camino, ycol, dfAux, atributos)
         
-    def crearHijos(self, nodoActual, camino, ycol, df, atributos):
+    def crearHijos(self, nodoActual, camino, ycol, df, atributos): #Creo los hijos dependiendo del camino
         resultados = df[ycol].unique()
         if len(resultados)==1: #Caso base
             #print(df)
@@ -90,7 +90,7 @@ class ArbolID3:
             nodoActual.addHijo(nodo)
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
 
-    def predecir(self, df):
+    def predecir(self, df): #Analizo todo el dataset de prueba
         total = 0
         correctas = 0
         for index, row in df.iterrows():
@@ -102,7 +102,7 @@ class ArbolID3:
             
         print(str((correctas/total)*100)+"% fueron correctas")
         
-    def realizarPrognosis(self,caso):
+    def realizarPrognosis(self,caso): #Para cada renglón del dataset de prueba, realizo una predicción
         nodoActual = self.root
         for index, value in caso.items():
             if len(nodoActual.hijos) == 0:
@@ -110,13 +110,13 @@ class ArbolID3:
             else:
                 #predic =  ""
                 predic = (nodoActual.padre.valor + "-" + str(nodoActual.arista))if nodoActual.padre != None else ""
-                print(predic)
+                #print(predic)
                 nodoActual = nodoActual.buscaHijo(caso[nodoActual.valor])
             
             #print(caso[index])
             #print(f"Index : {index}, Value : {value}")
 
-    def diagnosticar(self):
+    def diagnosticar(self): #Sirve para diagnosticar por medio de la terminal
         nodo = self.root
         while len(nodo.hijos)!= 0:
             print(nodo.valor+"?")
@@ -126,6 +126,7 @@ class ArbolID3:
             except:
                 print("Say Again?")
         print("Diagnóstico: "+nodo.valor)
+
 
 #Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
 def pprint_tree(node, file=None, _prefix="", _last=True):
@@ -156,17 +157,17 @@ def crearArbolDiccionario(nodo): #Creo un megadiccionario
         node["hijos"].append(crearArbolDiccionario(hijo))
     return node
 
-def exportarArbol(nodo, nombre):
+def exportarArbol(nodo, nombre): #Paso el megadiccionario a un JSON
     arbol = crearArbolDiccionario(nodo)
     with open(nombre, 'w') as fp:
         json.dump(arbol, fp,  indent=2)
 
-def importarArbol(archivo):
+def importarArbol(archivo): #Leo un JSON y lo paso a un megadiccionario
     with open(archivo) as f:
         arbol = json.load(f)
         return deDiccionarioAArbol(arbol)
 
-def deDiccionarioAArbol(diccionario, nodoPadre=None):
+def deDiccionarioAArbol(diccionario, nodoPadre=None): #Conforme voy leyendo los diccionarios voy creando los nodos
     if diccionario == None:
         return
     nodo = Nodo(diccionario["valor"], nodoPadre, diccionario["arista"])
@@ -175,7 +176,7 @@ def deDiccionarioAArbol(diccionario, nodoPadre=None):
     return nodo
 
 
-def recortarArbol(nodo):
+def recortarArbol(nodo): #Se trató de eliminar ramas donde no había valores distintos
     if nodo == None:
         return None
     nuevosHijos = nodo.hijos.copy()
@@ -196,66 +197,73 @@ def recortarArbol(nodo):
         return nuevoNodo
 
     return nodo  
-# Removes all nodes with only one child and returns
-# new root(note that root may change)
-def RemoveHalfNodes(root):
-    if root is None:
-        return None
-  
-    # Recur to left tree
-    root.left = RemoveHalfNodes(root.left)
-      
-    # Recur to right tree
-    root.right = RemoveHalfNodes(root.right)
-      
-    # if both left and right child is None 
-    # the node is not a Half node
-    if root.left is None and root.right is None:
-        return root
-  
-    # If current nodes is a half node with left child
-    # None then it's right child is returned and   
-    # replaces it in the given tree
-    if root.left is None:
-        new_root = root.right 
-        temp = root 
-        root = None
-        del(temp)
-        return new_root
-  
-    if root.right is None:
-        new_root = root.left
-        temp = root
-        root = None
-        del(temp)
-        return new_root
-      
-    return root
 
+class Doctor(): #Clase con la cual la parte gráfica puede realizar los diagnósticos
+    def __init__(self, root):
+        self.root = root
+        self.Diagnostico = False
+
+    def preguntar(self):
+        if len(self.root.hijos) == 0:
+            self.Diagnostico = True
+            return self.root.valor
+        return self.root.valor
+
+    def responderParam(self, arista):
+        if self.Diagnostico==True:
+            return
+        try:
+            self.root = self.root.buscaHijo(int(arista))
+        except:
+            self.root=self.root
+
+""" Conjunto de entrenamiento que vimos en clase, para ver que funcionara """
+"""
 ycol = "lluvia"
 dftrain = pd.read_csv('prueba.csv')
 y_train = dftrain[ycol] 
+"""
 
+""" Conjunto de Entrenamiento que utilizamos """
+ycol = "prognosis"
+dftrain = pd.read_csv('Training.csv')
+y_train = dftrain[ycol] 
+
+""" Conjunto con el que probamos nuestro modelo """
 dftest = pd.read_csv('Testing.csv')
 
-
+""" Creo el objeto Arbol, el cual lo voy a entrenar """
 ic = ArbolID3()
-#inicio = time.time()
+
+""" Descomentar esto cuando lo quiero entrenar desde cero """
 #ic.entrenar(dftrain,ycol)
-#print("--- %s segundos ---" % (time.time() - inicio))
-#print("Arbol Generado al Entrenar")
+
+""" Para ver de una forma bonita el árbol generado """
 #pprint_tree(ic.root)
-#exportarArbol(ic.root, "ArbolChico.json")
-#print("PreRecorte")
-ic.root=importarArbol("ArbolID3.json")
-#exportarArbol(ic.root, "A.json")
-#pprint_tree(ic.root)
-#ic.predecir(dftest)
-ic.diagnosticar()
-#recortarArbol(ic.root)
-#print("PostRecorte")
-#ic.root=recortarArbol(ic.root)
-#pprint_tree(ic.root)
+
+""" Para guardar el arbol en un formato JSON y no tener que generarlo desde cero """
 #exportarArbol(ic.root, "ArbolID3.json")
-#ic.predecir(dftest)
+
+""" Para cargar un árbol desde un archivo JSON """
+ic.root=importarArbol("ArbolID3.json")
+
+""" Para realizar pruebas con el conjunto de prueba """
+ic.predecir(dftest)
+
+""" Para responder a las preguntas por medio de la terminal """
+#ic.diagnosticar()
+
+""" Para conectarse con  la parte gráfica """
+dc = Doctor(ic.root)
+
+# while not dc.Diagnostico:
+#     print(dc.preguntar())
+#     dc.responderParam(input())
+#     dc.preguntar()
+
+# print(dc.preguntar())
+
+    
+
+
 
