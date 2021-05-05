@@ -20,7 +20,7 @@ class Nodo:
         for hijo in self.hijos:
             if hijo.arista==arista:
                 return hijo
-        return None 
+        raise 
 
 class ArbolID3:
     def __init__(self):
@@ -90,7 +90,6 @@ class ArbolID3:
             nodoActual.addHijo(nodo)
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
 
-
     def predecir(self, df):
         total = 0
         correctas = 0
@@ -102,9 +101,7 @@ class ArbolID3:
                 correctas += 1
             
         print(str((correctas/total)*100)+"% fueron correctas")
-            #print(row['prognosis'])
         
-
     def realizarPrognosis(self,caso):
         nodoActual = self.root
         for index, value in caso.items():
@@ -113,14 +110,22 @@ class ArbolID3:
             else:
                 #predic =  ""
                 predic = (nodoActual.padre.valor + "-" + str(nodoActual.arista))if nodoActual.padre != None else ""
-                #print(predic)
+                print(predic)
                 nodoActual = nodoActual.buscaHijo(caso[nodoActual.valor])
             
-
-
             #print(caso[index])
             #print(f"Index : {index}, Value : {value}")
 
+    def diagnosticar(self):
+        nodo = self.root
+        while len(nodo.hijos)!= 0:
+            print(nodo.valor+"?")
+            ans = input()
+            try:
+                nodo = nodo.buscaHijo(int(ans))
+            except:
+                print("Say Again?")
+        print("Diagnóstico: "+nodo.valor)
 
 #Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
 def pprint_tree(node, file=None, _prefix="", _last=True):
@@ -173,7 +178,7 @@ def deDiccionarioAArbol(diccionario, nodoPadre=None):
 def recortarArbol(nodo):
     if nodo == None:
         return
-    print(nodo.valor)
+    #print(nodo.valor)
     if len(nodo.hijos) == 1 and nodo.padre != None:
         abuelo = nodo.padre
         nieto = nodo.hijos.pop()
@@ -181,9 +186,10 @@ def recortarArbol(nodo):
         abuelo.hijos.clear()
         abuelo.addHijo(nieto)
         nieto.arista=nodo.arista
-
-    for hijo in nodo.hijos:
-        recortarArbol(hijo)
+        print(abuelo.valor, nodo.valor, nieto.valor)
+    else:
+        for hijo in nodo.hijos:
+            recortarArbol(hijo)
         
     
 
@@ -205,7 +211,8 @@ ic = ArbolID3()
 ic.root=importarArbol("ArbolID3.json")
 #exportarArbol(ic.root, "A.json")
 #pprint_tree(ic.root)
-ic.predecir(dftest)
+#ic.predecir(dftest)
+ic.diagnosticar()
 #recortarArbol(ic.root)
 #print("PostRecorte")
 #pprint_tree(ic.root)
