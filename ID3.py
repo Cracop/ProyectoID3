@@ -177,21 +177,60 @@ def deDiccionarioAArbol(diccionario, nodoPadre=None):
 
 def recortarArbol(nodo):
     if nodo == None:
-        return
-    #print(nodo.valor)
-    if len(nodo.hijos) == 1 and nodo.padre != None:
-        abuelo = nodo.padre
-        nieto = nodo.hijos.pop()
-        nieto.padre=abuelo
-        abuelo.hijos.clear()
-        abuelo.addHijo(nieto)
-        nieto.arista=nodo.arista
-        print(abuelo.valor, nodo.valor, nieto.valor)
-    else:
-        for hijo in nodo.hijos:
-            recortarArbol(hijo)
-        
+        return None
+    nuevosHijos = nodo.hijos.copy()
+    nodo.hijos.clear()
+    for hijo in nuevosHijos:
+        nodo.addHijo(recortarArbol(hijo))
     
+    if len(nodo.hijos)==0:
+        return nodo
+
+    if len(nuevosHijos) == 1:
+        nuevoNodo = nuevosHijos.pop()
+        nuevoNodo.arista = nodo.arista
+        nuevoNodo.padre = nodo.padre
+        temp = nodo
+        nodo = None
+        del (temp)
+        return nuevoNodo
+
+    return nodo  
+# Removes all nodes with only one child and returns
+# new root(note that root may change)
+def RemoveHalfNodes(root):
+    if root is None:
+        return None
+  
+    # Recur to left tree
+    root.left = RemoveHalfNodes(root.left)
+      
+    # Recur to right tree
+    root.right = RemoveHalfNodes(root.right)
+      
+    # if both left and right child is None 
+    # the node is not a Half node
+    if root.left is None and root.right is None:
+        return root
+  
+    # If current nodes is a half node with left child
+    # None then it's right child is returned and   
+    # replaces it in the given tree
+    if root.left is None:
+        new_root = root.right 
+        temp = root 
+        root = None
+        del(temp)
+        return new_root
+  
+    if root.right is None:
+        new_root = root.left
+        temp = root
+        root = None
+        del(temp)
+        return new_root
+      
+    return root
 
 ycol = "lluvia"
 dftrain = pd.read_csv('prueba.csv')
@@ -215,5 +254,8 @@ ic.root=importarArbol("ArbolID3.json")
 ic.diagnosticar()
 #recortarArbol(ic.root)
 #print("PostRecorte")
+#ic.root=recortarArbol(ic.root)
 #pprint_tree(ic.root)
+#exportarArbol(ic.root, "ArbolID3.json")
+#ic.predecir(dftest)
 
