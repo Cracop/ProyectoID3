@@ -5,8 +5,8 @@ import math
 import time 
 import json
 
-ycol = "lluvia"
-dftrain = pd.read_csv('prueba.csv')
+ycol = "prognosis"
+dftrain = pd.read_csv('Training.csv')
 y_train = dftrain[ycol] 
 
 valores = y_train.unique() 
@@ -28,15 +28,6 @@ class Nodo:
             if hijo.arista==arista:
                 return hijo
         return None 
-    
-    def imprimeHijos(self, level=0):
-        if self.arista != None:
-            print("\t" * level + self.arista + " -- "+self.valor)
-        else:
-            print("\t" * level + self.valor)
-        #print(self.hijos)
-        for hijo in self.hijos:
-            hijo.imprimeHijos(level+1)
 
 class ArbolID3:
     def __init__(self):
@@ -50,13 +41,11 @@ class ArbolID3:
         
             filasQueImportan = dftrain[dftrain[atributo]==valor] 
             n = 0
-            #print(len(filasQueImportan.index), "/", dftrain[atributo].size)
             proba1 = len(filasQueImportan.index)/dftrain[atributo].size
         
             for resultado in filasQueImportan[ycol].unique():
         
                 resultadosQueImportan = filasQueImportan[filasQueImportan[ycol]==resultado]
-                #print("  ", resultado, len(resultadosQueImportan.index), "/", len(filasQueImportan.index))
                 proba2 = len(resultadosQueImportan.index)/len(filasQueImportan.index)
                 n += proba2*math.log2(proba2)
         
@@ -67,15 +56,13 @@ class ArbolID3:
         return Nodo(valor, padre, arista)
 
     def seleccionaMejorAtributo(self, df, atributos, ycol):
-        #print(atributos)
         atri = list()
         entropias = list()
         for atributo in  atributos:
             if atributo != ycol:
                 atri.append(atributo)
                 entropias.append(self.entropia(atributo, ycol))
-        #print(entropias, atri)
-        return atri[np.argmin(entropias)]
+        return atri[np.argmin(np.nonzero(entropias))]
 
     def entrenar(self, dftrain, ycol):
         self.atributos=list(dftrain.columns) #Creo una lista de los atributos (para pasarlos luego)
@@ -108,14 +95,8 @@ class ArbolID3:
             atributosAux.remove(nodo)
             nodo = self.crearNodo(nodo, nodoActual, camino)
             nodoActual.addHijo(nodo)
-            #
-            # if nodoActual.padre != None and len(nodoActual.padre.hijos) == 1:
-            #     nodoActual.padre.hijos.clear()
-            #     nodo.padre=nodoActual.padre
-            #     nodoActual.padre.addHijo(nodo)
-            #print(df)
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
-            #print(df)
+
 
 #Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
 def pprint_tree(node, file=None, _prefix="", _last=True):
@@ -131,7 +112,10 @@ def crearArbolDiccionario(nodo): #Creo un megadiccionario
         return
     node = dict()
     node["valor"]=nodo.valor
-    node["arista"]=nodo.arista
+    if nodo.arista != None:
+        node["arista"]=int(nodo.arista)
+    else:
+        node["arista"]=nodo.arista
     if nodo.padre != None:
         node["padre"]=nodo.padre.valor
     else:
@@ -141,19 +125,22 @@ def crearArbolDiccionario(nodo): #Creo un megadiccionario
         node["hijos"].append(crearArbolDiccionario(hijo))
     return node
 
-def exportarArbol(nodo):
+def exportarArbol(nodo, nombre):
     arbol = crearArbolDiccionario(nodo)
-    with open('data.json', 'w') as fp:
-        json.dump(arbol, fp,  indent=4)
-    pass
-    
+    with open(nombre, 'w') as fp:
+        json.dump(arbol, fp,  indent=2)
 
-    
+def importarArbol(archivo):
+    with open(archivo) as f:
+        arbol = json.load(f)
+        return arbol
+        
 ic = ArbolID3()
 inicio = time.time()
 ic.entrenar(dftrain,ycol)
 print("--- %s segundos ---" % (time.time() - inicio))
 print(" ")
 pprint_tree(ic.root)
-exportarArbol(ic.root)
+#exportarArbol(ic.root, "ArbolID3.json")
+#print(importarArbol("ArbolID3.json"))
 
