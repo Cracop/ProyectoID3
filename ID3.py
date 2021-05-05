@@ -91,14 +91,47 @@ class ArbolID3:
             self.encontrarCaminos(nodo, atributosAux, ycol, df)
 
 
+    def predecir(self, df):
+        total = 0
+        correctas = 0
+        for index, row in df.iterrows():
+            predic = self.realizarPrognosis(row)
+            total += 1
+            print("Prediccion: "+predic, " || Correcta: "+row["prognosis"])
+            if row["prognosis"] == predic:
+                correctas += 1
+            
+        print(str((correctas/total)*100)+"% fueron correctas")
+            #print(row['prognosis'])
+        
+
+    def realizarPrognosis(self,caso):
+        nodoActual = self.root
+        for index, value in caso.items():
+            if len(nodoActual.hijos) == 0:
+                return nodoActual.valor
+            else:
+                #predic =  ""
+                predic = (nodoActual.padre.valor + "-" + str(nodoActual.arista))if nodoActual.padre != None else ""
+                #print(predic)
+                nodoActual = nodoActual.buscaHijo(caso[nodoActual.valor])
+            
+
+
+            #print(caso[index])
+            #print(f"Index : {index}, Value : {value}")
+
+
 #Código sacado de https://vallentin.dev/2016/11/29/pretty-print-tree
 def pprint_tree(node, file=None, _prefix="", _last=True):
-    print(_prefix, "`- " if _last else "|- ", node.arista if node.arista != None else "","-> ",node.valor, sep="", file=file)
-    _prefix += "   " if _last else "|  "
+    print(_prefix, "`-" if _last else "|-", node.arista if node.arista != None else "","-> ",node.valor, sep="", file=file)
+    _prefix += " " if _last else "| "
     child_count = len(node.hijos)
     for i, child in enumerate(node.hijos):
         _last = i == (child_count - 1)
         pprint_tree(child, file, _prefix, _last)
+#
+
 
 def crearArbolDiccionario(nodo): #Creo un megadiccionario
     if nodo == None:
@@ -128,31 +161,52 @@ def importarArbol(archivo):
         arbol = json.load(f)
         return deDiccionarioAArbol(arbol)
 
-def deDiccionarioAArbol(diccionario):
+def deDiccionarioAArbol(diccionario, nodoPadre=None):
     if diccionario == None:
         return
-    nodo = Nodo(diccionario["valor"], diccionario["padre"], diccionario["arista"])
+    nodo = Nodo(diccionario["valor"], nodoPadre, diccionario["arista"])
     for hijo in diccionario["hijos"]:
-        nodo.addHijo(deDiccionarioAArbol(hijo))
+        nodo.addHijo(deDiccionarioAArbol(hijo, nodo))
     return nodo
 
+
+def recortarArbol(nodo):
+    if nodo == None:
+        return
+    print(nodo.valor)
+    if len(nodo.hijos) == 1 and nodo.padre != None:
+        abuelo = nodo.padre
+        nieto = nodo.hijos.pop()
+        nieto.padre=abuelo
+        abuelo.hijos.clear()
+        abuelo.addHijo(nieto)
+        nieto.arista=nodo.arista
+
+    for hijo in nodo.hijos:
+        recortarArbol(hijo)
+        
+    
 
 ycol = "lluvia"
 dftrain = pd.read_csv('prueba.csv')
 y_train = dftrain[ycol] 
 
-valores = y_train.unique() 
-#print(dftrain.head())
+dftest = pd.read_csv('Testing.csv')
 
 
 ic = ArbolID3()
 #inicio = time.time()
-ic.entrenar(dftrain,ycol)
+#ic.entrenar(dftrain,ycol)
 #print("--- %s segundos ---" % (time.time() - inicio))
 #print("Arbol Generado al Entrenar")
 #pprint_tree(ic.root)
 #exportarArbol(ic.root, "ArbolChico.json")
-print("Arbol Generado al leer el json")
-ic.root=importarArbol("ArbolChico.json")
-pprint_tree(ic.root)
+#print("PreRecorte")
+ic.root=importarArbol("ArbolID3.json")
+#exportarArbol(ic.root, "A.json")
+#pprint_tree(ic.root)
+ic.predecir(dftest)
+#recortarArbol(ic.root)
+#print("PostRecorte")
+#pprint_tree(ic.root)
 
