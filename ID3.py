@@ -5,13 +5,6 @@ import math
 import time 
 import json
 
-ycol = "prognosis"
-dftrain = pd.read_csv('Training.csv')
-y_train = dftrain[ycol] 
-
-valores = y_train.unique() 
-#print(dftrain.head())
-
 class Nodo:
     def __init__(self,valor, padre, arista=None):
         self.valor=valor
@@ -113,7 +106,7 @@ def crearArbolDiccionario(nodo): #Creo un megadiccionario
     node = dict()
     node["valor"]=nodo.valor
     if nodo.arista != None:
-        node["arista"]=int(nodo.arista)
+        node["arista"]= int(nodo.arista) #if type(nodo.arista) is int else nodo.arista
     else:
         node["arista"]=nodo.arista
     if nodo.padre != None:
@@ -133,14 +126,33 @@ def exportarArbol(nodo, nombre):
 def importarArbol(archivo):
     with open(archivo) as f:
         arbol = json.load(f)
-        return arbol
-        
+        return deDiccionarioAArbol(arbol)
+
+def deDiccionarioAArbol(diccionario):
+    if diccionario == None:
+        return
+    nodo = Nodo(diccionario["valor"], diccionario["padre"], diccionario["arista"])
+    for hijo in diccionario["hijos"]:
+        nodo.addHijo(deDiccionarioAArbol(hijo))
+    return nodo
+
+
+ycol = "lluvia"
+dftrain = pd.read_csv('prueba.csv')
+y_train = dftrain[ycol] 
+
+valores = y_train.unique() 
+#print(dftrain.head())
+
+
 ic = ArbolID3()
-inicio = time.time()
+#inicio = time.time()
 ic.entrenar(dftrain,ycol)
-print("--- %s segundos ---" % (time.time() - inicio))
-print(" ")
+#print("--- %s segundos ---" % (time.time() - inicio))
+#print("Arbol Generado al Entrenar")
+#pprint_tree(ic.root)
+#exportarArbol(ic.root, "ArbolChico.json")
+print("Arbol Generado al leer el json")
+ic.root=importarArbol("ArbolChico.json")
 pprint_tree(ic.root)
-#exportarArbol(ic.root, "ArbolID3.json")
-#print(importarArbol("ArbolID3.json"))
 
