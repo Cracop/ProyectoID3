@@ -1,0 +1,47 @@
+.id3 {
+  height: 50vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  grid-gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-areas:
+    "pregunta pregunta"
+    "respuesta_1 respuesta_2";
+}
+
+.pregunta {
+  grid-area: pregunta;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.respuesta_1 {
+  grid-area: respuesta_1;
+}
+
+.respuesta_2 {
+  grid-area: respuesta_2;
+}
+
+button {
+  height: 150px;
+  width: 300px;
+  overflow-wrap: normal;
+  color: white;
+  font-size: 1rem;
+  border: 0;
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.btn_respuesta_1 {
+  background-color: rgb(30, 207, 24);
+}
+
+.btn_respuesta_2 {
+  background-color: rgb(24, 51, 207);
+}
