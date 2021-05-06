@@ -255,6 +255,7 @@ ic.root=importarArbol("ArbolID3.json")
 """ Para realizar pruebas con el conjunto de prueba """
 ic.predecir(dftest)
 
+
 """ Para responder a las preguntas por medio de la terminal """
 #ic.diagnosticar()
 
