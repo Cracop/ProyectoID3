@@ -238,14 +238,19 @@ ic = ArbolID3()
 """ Descomentar esto cuando lo quiero entrenar desde cero """
 #ic.entrenar(dftrain,ycol)
 
-""" Para ver de una forma bonita el árbol generado """
-#pprint_tree(ic.root)
-
 """ Para guardar el arbol en un formato JSON y no tener que generarlo desde cero """
 #exportarArbol(ic.root, "ArbolID3.json")
 
 """ Para cargar un árbol desde un archivo JSON """
 ic.root=importarArbol("ArbolID3.json")
+
+""" Para ver de una forma bonita el árbol generado """
+#pprint_tree(ic.root)
+
+""" Para hacer más cortas las ramas del arbol """
+# ic.root=recortarArbol(ic.root)
+# pprint_tree(ic.root)
+# exportarArbol(ic.root, "ArbolID3.json")
 
 """ Para realizar pruebas con el conjunto de prueba """
 ic.predecir(dftest)
@@ -262,6 +267,8 @@ dc = Doctor(ic.root)
 #     dc.preguntar()
 
 # print(dc.preguntar())
+
+
 
     
 
