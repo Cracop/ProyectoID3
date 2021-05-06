@@ -10,3 +10,13 @@ body {
   justify-items: center;
   overflow: hidden;
 }
+
+.app__image {
+  display: flex;
+  place-content: center;
+}
+
+img {
+  width: 75%;
+  height: 100%;
+}

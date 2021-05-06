@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
-    'Conector'
+    'Conector',
 ]
 
 MIDDLEWARE = [
@@ -136,5 +136,4 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    'https://iachessgame.herokuapp.com',
 )

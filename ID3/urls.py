@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+
 
 from Conector import views as conector_views
 
 urlpatterns = [
-    url(r'^id3/$', Conector.comenzarJuego),
-    url(r'^id3/(?P<ans>[0-9a-zA-Z]+)/$',
+    url(r'^id3/$', conector_views.comenzarJuego),
+    url(r'^id3/(?P<ans>[0-2]+)/$',
         conector_views.sendAns),
     path('admin/', admin.site.urls),
 ]
