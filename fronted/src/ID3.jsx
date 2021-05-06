@@ -7,7 +7,7 @@ const connection = new Connection()
 
 class ID3 extends Component {
     state = {
-        pregunta: "Tu personaje es Guapo?",
+        pregunta: "En espera",
         respuesta_1: "Verdadero",
         respuesta_2: "Falso",
     }

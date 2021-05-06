@@ -15,7 +15,7 @@
   grid-area: pregunta;
   text-align: center;
   color: white;
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 
 .respuesta_1 {
@@ -31,7 +31,7 @@ button {
   width: 300px;
   overflow-wrap: normal;
   color: white;
-  font-size: 1rem;
+  font-size: 2rem;
   border: 0;
   padding: 10px;
   border-radius: 50px;
@@ -43,5 +43,5 @@ button {
 }
 
 .btn_respuesta_2 {
-  background-color: rgb(24, 51, 207);
+  background-color: rgb(207, 24, 24);
 }
