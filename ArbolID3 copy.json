@@ -266,60 +266,151 @@
                               "hijos": []
                             },
                             {
-                              "valor": "high_fever",
+                              "valor": "patches_in_throat",
                               "arista": 0,
                               "padre": "fatigue",
                               "hijos": [
                                 {
-                                  "valor": "pus_filled_pimples",
+                                  "valor": "high_fever",
                                   "arista": 0,
-                                  "padre": "high_fever",
+                                  "padre": "mood_swings",
                                   "hijos": [
                                     {
-                                      "valor": "Acne",
-                                      "arista": 1,
-                                      "padre": "pus_filled_pimples",
-                                      "hijos": []
-                                    },
-                                    {
-                                      "valor": "blackheads",
+                                      "valor": "dark_urine",
                                       "arista": 0,
-                                      "padre": "pus_filled_pimples",
+                                      "padre": "high_fever",
                                       "hijos": [
                                         {
-                                          "valor": "Acne",
-                                          "arista": 1,
-                                          "padre": "blackheads",
-                                          "hijos": []
-                                        },
-                                        {
-                                          "valor": "skin_peeling",
+                                          "valor": "mild_fever",
                                           "arista": 0,
-                                          "padre": "blackheads",
+                                          "padre": "dark_urine",
                                           "hijos": [
                                             {
-                                              "valor": "Psoriasis",
-                                              "arista": 1,
-                                              "padre": "skin_peeling",
-                                              "hijos": []
-                                            },
-                                            {
-                                              "valor": "Impetigo",
+                                              "valor": "blurred_and_distorted_vision",
                                               "arista": 0,
-                                              "padre": "skin_peeling",
-                                              "hijos": []
+                                              "padre": "mild_fever",
+                                              "hijos": [
+                                                {
+                                                  "valor": "weakness_in_limbs",
+                                                  "arista": 0,
+                                                  "padre": "blurred_and_distorted_vision",
+                                                  "hijos": [
+                                                    {
+                                                      "valor": "cramps",
+                                                      "arista": 0,
+                                                      "padre": "weakness_in_limbs",
+                                                      "hijos": [
+                                                        {
+                                                          "valor": "swollen_extremeties",
+                                                          "arista": 0,
+                                                          "padre": "cramps",
+                                                          "hijos": [
+                                                            {
+                                                              "valor": "stiff_neck",
+                                                              "arista": 0,
+                                                              "padre": "swollen_extremeties",
+                                                              "hijos": [
+                                                                {
+                                                                  "valor": "bladder_discomfort",
+                                                                  "arista": 0,
+                                                                  "padre": "stiff_neck",
+                                                                  "hijos": [
+                                                                    {
+                                                                      "valor": "muscle_pain",
+                                                                      "arista": 0,
+                                                                      "padre": "bladder_discomfort",
+                                                                      "hijos": [
+                                                                        {
+                                                                          "valor": "polyuria",
+                                                                          "arista": 0,
+                                                                          "padre": "muscle_pain",
+                                                                          "hijos": [
+                                                                            {
+                                                                              "valor": "coma",
+                                                                              "arista": 0,
+                                                                              "padre": "polyuria",
+                                                                              "hijos": [
+                                                                                {
+                                                                                  "valor": "painful_walking",
+                                                                                  "arista": 0,
+                                                                                  "padre": "coma",
+                                                                                  "hijos": [
+                                                                                    {
+                                                                                      "valor": "pus_filled_pimples",
+                                                                                      "arista": 0,
+                                                                                      "padre": "fluid_overload.1",
+                                                                                      "hijos": [
+                                                                                        {
+                                                                                          "valor": "Acne",
+                                                                                          "arista": 1,
+                                                                                          "padre": "pus_filled_pimples",
+                                                                                          "hijos": []
+                                                                                        },
+                                                                                        {
+                                                                                          "valor": "blackheads",
+                                                                                          "arista": 0,
+                                                                                          "padre": "pus_filled_pimples",
+                                                                                          "hijos": [
+                                                                                            {
+                                                                                              "valor": "Acne",
+                                                                                              "arista": 1,
+                                                                                              "padre": "blackheads",
+                                                                                              "hijos": []
+                                                                                            },
+                                                                                            {
+                                                                                              "valor": "skin_peeling",
+                                                                                              "arista": 0,
+                                                                                              "padre": "blackheads",
+                                                                                              "hijos": [
+                                                                                                {
+                                                                                                  "valor": "Psoriasis",
+                                                                                                  "arista": 1,
+                                                                                                  "padre": "skin_peeling",
+                                                                                                  "hijos": []
+                                                                                                },
+                                                                                                {
+                                                                                                  "valor": "Impetigo",
+                                                                                                  "arista": 0,
+                                                                                                  "padre": "skin_peeling",
+                                                                                                  "hijos": []
+                                                                                                }
+                                                                                              ]
+                                                                                            }
+                                                                                          ]
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
                                       ]
+                                    },
+                                    {
+                                      "valor": "Impetigo",
+                                      "arista": 1,
+                                      "padre": "high_fever",
+                                      "hijos": []
                                     }
                                   ]
-                                },
-                                {
-                                  "valor": "Impetigo",
-                                  "arista": 1,
-                                  "padre": "high_fever",
-                                  "hijos": []
                                 }
                               ]
                             }
@@ -380,34 +471,48 @@
                   "padre": "shivering",
                   "hijos": [
                     {
-                      "valor": "fatigue",
+                      "valor": "spotting_ urination",
                       "arista": 1,
                       "padre": "chills",
                       "hijos": [
                         {
-                          "valor": "cough",
+                          "valor": "fatigue",
                           "arista": 0,
-                          "padre": "fatigue",
+                          "padre": "ulcers_on_tongue",
                           "hijos": [
                             {
-                              "valor": "Allergy",
+                              "valor": "patches_in_throat",
                               "arista": 0,
-                              "padre": "cough",
-                              "hijos": []
+                              "padre": "fatigue",
+                              "hijos": [
+                                {
+                                  "valor": "cough",
+                                  "arista": 0,
+                                  "padre": "mood_swings",
+                                  "hijos": [
+                                    {
+                                      "valor": "Allergy",
+                                      "arista": 0,
+                                      "padre": "cough",
+                                      "hijos": []
+                                    },
+                                    {
+                                      "valor": "Common Cold",
+                                      "arista": 1,
+                                      "padre": "cough",
+                                      "hijos": []
+                                    }
+                                  ]
+                                }
+                              ]
                             },
                             {
                               "valor": "Common Cold",
                               "arista": 1,
-                              "padre": "cough",
+                              "padre": "fatigue",
                               "hijos": []
                             }
                           ]
-                        },
-                        {
-                          "valor": "Common Cold",
-                          "arista": 1,
-                          "padre": "fatigue",
-                          "hijos": []
                         }
                       ]
                     },
@@ -498,109 +603,190 @@
                                               "padre": "fatigue",
                                               "hijos": [
                                                 {
-                                                  "valor": "high_fever",
+                                                  "valor": "cough",
                                                   "arista": 0,
                                                   "padre": "anxiety",
                                                   "hijos": [
                                                     {
-                                                      "valor": "sunken_eyes",
+                                                      "valor": "high_fever",
                                                       "arista": 0,
-                                                      "padre": "high_fever",
+                                                      "padre": "restlessness",
                                                       "hijos": [
                                                         {
-                                                          "valor": "breathlessness",
+                                                          "valor": "sunken_eyes",
                                                           "arista": 0,
-                                                          "padre": "sunken_eyes",
+                                                          "padre": "high_fever",
                                                           "hijos": [
                                                             {
-                                                              "valor": "sweating",
+                                                              "valor": "breathlessness",
                                                               "arista": 0,
-                                                              "padre": "breathlessness",
+                                                              "padre": "sunken_eyes",
                                                               "hijos": [
                                                                 {
-                                                                  "valor": "dehydration",
+                                                                  "valor": "sweating",
                                                                   "arista": 0,
-                                                                  "padre": "sweating",
+                                                                  "padre": "breathlessness",
                                                                   "hijos": [
                                                                     {
-                                                                      "valor": "indigestion",
+                                                                      "valor": "dehydration",
                                                                       "arista": 0,
-                                                                      "padre": "dehydration",
+                                                                      "padre": "sweating",
                                                                       "hijos": [
                                                                         {
-                                                                          "valor": "headache",
+                                                                          "valor": "indigestion",
                                                                           "arista": 0,
-                                                                          "padre": "indigestion",
+                                                                          "padre": "dehydration",
                                                                           "hijos": [
                                                                             {
-                                                                              "valor": "yellowish_skin",
+                                                                              "valor": "headache",
                                                                               "arista": 0,
-                                                                              "padre": "headache",
+                                                                              "padre": "indigestion",
                                                                               "hijos": [
                                                                                 {
-                                                                                  "valor": "dark_urine",
-                                                                                  "arista": 1,
-                                                                                  "padre": "yellowish_skin",
+                                                                                  "valor": "yellowish_skin",
+                                                                                  "arista": 0,
+                                                                                  "padre": "headache",
                                                                                   "hijos": [
                                                                                     {
-                                                                                      "valor": "nausea",
-                                                                                      "arista": 0,
-                                                                                      "padre": "dark_urine",
+                                                                                      "valor": "dark_urine",
+                                                                                      "arista": 1,
+                                                                                      "padre": "yellowish_skin",
                                                                                       "hijos": [
                                                                                         {
-                                                                                          "valor": "Chronic cholestasis",
-                                                                                          "arista": 1,
-                                                                                          "padre": "nausea",
-                                                                                          "hijos": []
+                                                                                          "valor": "nausea",
+                                                                                          "arista": 0,
+                                                                                          "padre": "dark_urine",
+                                                                                          "hijos": [
+                                                                                            {
+                                                                                              "valor": "Chronic cholestasis",
+                                                                                              "arista": 1,
+                                                                                              "padre": "nausea",
+                                                                                              "hijos": []
+                                                                                            },
+                                                                                            {
+                                                                                              "valor": "Alcoholic hepatitis",
+                                                                                              "arista": 0,
+                                                                                              "padre": "nausea",
+                                                                                              "hijos": []
+                                                                                            }
+                                                                                          ]
                                                                                         },
                                                                                         {
-                                                                                          "valor": "Alcoholic hepatitis",
-                                                                                          "arista": 0,
-                                                                                          "padre": "nausea",
+                                                                                          "valor": "hepatitis A",
+                                                                                          "arista": 1,
+                                                                                          "padre": "dark_urine",
                                                                                           "hijos": []
                                                                                         }
                                                                                       ]
                                                                                     },
                                                                                     {
-                                                                                      "valor": "hepatitis A",
-                                                                                      "arista": 1,
-                                                                                      "padre": "dark_urine",
-                                                                                      "hijos": []
+                                                                                      "valor": "nausea",
+                                                                                      "arista": 0,
+                                                                                      "padre": "yellowish_skin",
+                                                                                      "hijos": [
+                                                                                        {
+                                                                                          "valor": "loss_of_appetite",
+                                                                                          "arista": 0,
+                                                                                          "padre": "nausea",
+                                                                                          "hijos": [
+                                                                                            {
+                                                                                              "valor": "Peptic ulcer diseae",
+                                                                                              "arista": 1,
+                                                                                              "padre": "loss_of_appetite",
+                                                                                              "hijos": []
+                                                                                            },
+                                                                                            {
+                                                                                              "valor": "abdominal_pain",
+                                                                                              "arista": 0,
+                                                                                              "padre": "loss_of_appetite",
+                                                                                              "hijos": [
+                                                                                                {
+                                                                                                  "valor": "Paralysis (brain hemorrhage)",
+                                                                                                  "arista": 0,
+                                                                                                  "padre": "abdominal_pain",
+                                                                                                  "hijos": []
+                                                                                                },
+                                                                                                {
+                                                                                                  "valor": "Alcoholic hepatitis",
+                                                                                                  "arista": 1,
+                                                                                                  "padre": "abdominal_pain",
+                                                                                                  "hijos": []
+                                                                                                }
+                                                                                              ]
+                                                                                            }
+                                                                                          ]
+                                                                                        },
+                                                                                        {
+                                                                                          "valor": "(vertigo) Paroymsal  Positional Vertigo",
+                                                                                          "arista": 1,
+                                                                                          "padre": "nausea",
+                                                                                          "hijos": []
+                                                                                        }
+                                                                                      ]
                                                                                     }
                                                                                   ]
                                                                                 },
                                                                                 {
                                                                                   "valor": "nausea",
-                                                                                  "arista": 0,
-                                                                                  "padre": "yellowish_skin",
+                                                                                  "arista": 1,
+                                                                                  "padre": "headache",
                                                                                   "hijos": [
                                                                                     {
-                                                                                      "valor": "loss_of_appetite",
+                                                                                      "valor": "yellow_urine",
                                                                                       "arista": 0,
                                                                                       "padre": "nausea",
                                                                                       "hijos": [
                                                                                         {
-                                                                                          "valor": "Peptic ulcer diseae",
-                                                                                          "arista": 1,
-                                                                                          "padre": "loss_of_appetite",
-                                                                                          "hijos": []
-                                                                                        },
-                                                                                        {
-                                                                                          "valor": "abdominal_pain",
+                                                                                          "valor": "phlegm",
                                                                                           "arista": 0,
-                                                                                          "padre": "loss_of_appetite",
+                                                                                          "padre": "yellow_urine",
                                                                                           "hijos": [
                                                                                             {
-                                                                                              "valor": "Paralysis (brain hemorrhage)",
+                                                                                              "valor": "fast_heart_rate",
                                                                                               "arista": 0,
-                                                                                              "padre": "abdominal_pain",
-                                                                                              "hijos": []
-                                                                                            },
-                                                                                            {
-                                                                                              "valor": "Alcoholic hepatitis",
-                                                                                              "arista": 1,
-                                                                                              "padre": "abdominal_pain",
-                                                                                              "hijos": []
+                                                                                              "padre": "phlegm",
+                                                                                              "hijos": [
+                                                                                                {
+                                                                                                  "valor": "bruising",
+                                                                                                  "arista": 0,
+                                                                                                  "padre": "fast_heart_rate",
+                                                                                                  "hijos": [
+                                                                                                    {
+                                                                                                      "valor": "excessive_hunger",
+                                                                                                      "arista": 0,
+                                                                                                      "padre": "bruising",
+                                                                                                      "hijos": [
+                                                                                                        {
+                                                                                                          "valor": "swelling_joints",
+                                                                                                          "arista": 0,
+                                                                                                          "padre": "excessive_hunger",
+                                                                                                          "hijos": [
+                                                                                                            {
+                                                                                                              "valor": "spinning_movements",
+                                                                                                              "arista": 0,
+                                                                                                              "padre": "knee_pain",
+                                                                                                              "hijos": [
+                                                                                                                {
+                                                                                                                  "valor": "Paralysis (brain hemorrhage)",
+                                                                                                                  "arista": 0,
+                                                                                                                  "padre": "spinning_movements",
+                                                                                                                  "hijos": []
+                                                                                                                },
+                                                                                                                {
+                                                                                                                  "valor": "(vertigo) Paroymsal  Positional Vertigo",
+                                                                                                                  "arista": 1,
+                                                                                                                  "padre": "spinning_movements",
+                                                                                                                  "hijos": []
+                                                                                                                }
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          ]
+                                                                                                        }
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  ]
+                                                                                                }
+                                                                                              ]
                                                                                             }
                                                                                           ]
                                                                                         }
@@ -617,51 +803,25 @@
                                                                               ]
                                                                             },
                                                                             {
-                                                                              "valor": "nausea",
+                                                                              "valor": "Peptic ulcer diseae",
                                                                               "arista": 1,
-                                                                              "padre": "headache",
-                                                                              "hijos": [
-                                                                                {
-                                                                                  "valor": "spinning_movements",
-                                                                                  "arista": 0,
-                                                                                  "padre": "nausea",
-                                                                                  "hijos": [
-                                                                                    {
-                                                                                      "valor": "Paralysis (brain hemorrhage)",
-                                                                                      "arista": 0,
-                                                                                      "padre": "spinning_movements",
-                                                                                      "hijos": []
-                                                                                    },
-                                                                                    {
-                                                                                      "valor": "(vertigo) Paroymsal  Positional Vertigo",
-                                                                                      "arista": 1,
-                                                                                      "padre": "spinning_movements",
-                                                                                      "hijos": []
-                                                                                    }
-                                                                                  ]
-                                                                                },
-                                                                                {
-                                                                                  "valor": "(vertigo) Paroymsal  Positional Vertigo",
-                                                                                  "arista": 1,
-                                                                                  "padre": "nausea",
-                                                                                  "hijos": []
-                                                                                }
-                                                                              ]
+                                                                              "padre": "indigestion",
+                                                                              "hijos": []
                                                                             }
                                                                           ]
                                                                         },
                                                                         {
-                                                                          "valor": "Peptic ulcer diseae",
+                                                                          "valor": "Gastroenteritis",
                                                                           "arista": 1,
-                                                                          "padre": "indigestion",
+                                                                          "padre": "dehydration",
                                                                           "hijos": []
                                                                         }
                                                                       ]
                                                                     },
                                                                     {
-                                                                      "valor": "Gastroenteritis",
+                                                                      "valor": "Heart attack",
                                                                       "arista": 1,
-                                                                      "padre": "dehydration",
+                                                                      "padre": "sweating",
                                                                       "hijos": []
                                                                     }
                                                                   ]
@@ -669,32 +829,26 @@
                                                                 {
                                                                   "valor": "Heart attack",
                                                                   "arista": 1,
-                                                                  "padre": "sweating",
+                                                                  "padre": "breathlessness",
                                                                   "hijos": []
                                                                 }
                                                               ]
                                                             },
                                                             {
-                                                              "valor": "Heart attack",
+                                                              "valor": "Gastroenteritis",
                                                               "arista": 1,
-                                                              "padre": "breathlessness",
+                                                              "padre": "sunken_eyes",
                                                               "hijos": []
                                                             }
                                                           ]
                                                         },
                                                         {
-                                                          "valor": "Gastroenteritis",
+                                                          "valor": "Malaria",
                                                           "arista": 1,
-                                                          "padre": "sunken_eyes",
+                                                          "padre": "high_fever",
                                                           "hijos": []
                                                         }
                                                       ]
-                                                    },
-                                                    {
-                                                      "valor": "Malaria",
-                                                      "arista": 1,
-                                                      "padre": "high_fever",
-                                                      "hijos": []
                                                     }
                                                   ]
                                                 },
@@ -864,32 +1018,46 @@
                                                                                           "padre": "headache",
                                                                                           "hijos": [
                                                                                             {
-                                                                                              "valor": "chest_pain",
+                                                                                              "valor": "yellow_urine",
                                                                                               "arista": 0,
                                                                                               "padre": "nausea",
                                                                                               "hijos": [
                                                                                                 {
-                                                                                                  "valor": "Hypertension ",
-                                                                                                  "arista": 1,
-                                                                                                  "padre": "chest_pain",
-                                                                                                  "hijos": []
-                                                                                                },
-                                                                                                {
-                                                                                                  "valor": "dizziness",
+                                                                                                  "valor": "phlegm",
                                                                                                   "arista": 0,
-                                                                                                  "padre": "chest_pain",
+                                                                                                  "padre": "yellow_urine",
                                                                                                   "hijos": [
                                                                                                     {
-                                                                                                      "valor": "Hypertension ",
-                                                                                                      "arista": 1,
-                                                                                                      "padre": "dizziness",
-                                                                                                      "hijos": []
-                                                                                                    },
-                                                                                                    {
-                                                                                                      "valor": "Paralysis (brain hemorrhage)",
+                                                                                                      "valor": "chest_pain",
                                                                                                       "arista": 0,
-                                                                                                      "padre": "dizziness",
-                                                                                                      "hijos": []
+                                                                                                      "padre": "phlegm",
+                                                                                                      "hijos": [
+                                                                                                        {
+                                                                                                          "valor": "Hypertension ",
+                                                                                                          "arista": 1,
+                                                                                                          "padre": "chest_pain",
+                                                                                                          "hijos": []
+                                                                                                        },
+                                                                                                        {
+                                                                                                          "valor": "dizziness",
+                                                                                                          "arista": 0,
+                                                                                                          "padre": "chest_pain",
+                                                                                                          "hijos": [
+                                                                                                            {
+                                                                                                              "valor": "Hypertension ",
+                                                                                                              "arista": 1,
+                                                                                                              "padre": "dizziness",
+                                                                                                              "hijos": []
+                                                                                                            },
+                                                                                                            {
+                                                                                                              "valor": "Paralysis (brain hemorrhage)",
+                                                                                                              "arista": 0,
+                                                                                                              "padre": "dizziness",
+                                                                                                              "hijos": []
+                                                                                                            }
+                                                                                                          ]
+                                                                                                        }
+                                                                                                      ]
                                                                                                     }
                                                                                                   ]
                                                                                                 }
@@ -919,106 +1087,127 @@
                                                                                                   "padre": "back_pain",
                                                                                                   "hijos": [
                                                                                                     {
-                                                                                                      "valor": "chest_pain",
+                                                                                                      "valor": "swelling_of_stomach",
                                                                                                       "arista": 0,
                                                                                                       "padre": "constipation",
                                                                                                       "hijos": [
                                                                                                         {
-                                                                                                          "valor": "Hypertension ",
-                                                                                                          "arista": 1,
-                                                                                                          "padre": "chest_pain",
-                                                                                                          "hijos": []
-                                                                                                        },
-                                                                                                        {
-                                                                                                          "valor": "weakness_in_limbs",
+                                                                                                          "valor": "runny_nose",
                                                                                                           "arista": 0,
-                                                                                                          "padre": "chest_pain",
+                                                                                                          "padre": "swelling_of_stomach",
                                                                                                           "hijos": [
                                                                                                             {
-                                                                                                              "valor": "Cervical spondylosis",
-                                                                                                              "arista": 1,
-                                                                                                              "padre": "weakness_in_limbs",
-                                                                                                              "hijos": []
-                                                                                                            },
-                                                                                                            {
-                                                                                                              "valor": "pain_during_bowel_movements",
+                                                                                                              "valor": "chest_pain",
                                                                                                               "arista": 0,
-                                                                                                              "padre": "weakness_in_limbs",
+                                                                                                              "padre": "phlegm",
                                                                                                               "hijos": [
                                                                                                                 {
-                                                                                                                  "valor": "Dimorphic hemmorhoids(piles)",
+                                                                                                                  "valor": "Hypertension ",
                                                                                                                   "arista": 1,
-                                                                                                                  "padre": "pain_during_bowel_movements",
+                                                                                                                  "padre": "chest_pain",
                                                                                                                   "hijos": []
                                                                                                                 },
                                                                                                                 {
-                                                                                                                  "valor": "neck_pain",
+                                                                                                                  "valor": "weakness_in_limbs",
                                                                                                                   "arista": 0,
-                                                                                                                  "padre": "pain_during_bowel_movements",
+                                                                                                                  "padre": "chest_pain",
                                                                                                                   "hijos": [
                                                                                                                     {
-                                                                                                                      "valor": "cramps",
+                                                                                                                      "valor": "Cervical spondylosis",
+                                                                                                                      "arista": 1,
+                                                                                                                      "padre": "weakness_in_limbs",
+                                                                                                                      "hijos": []
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                      "valor": "pain_during_bowel_movements",
                                                                                                                       "arista": 0,
-                                                                                                                      "padre": "neck_pain",
+                                                                                                                      "padre": "weakness_in_limbs",
                                                                                                                       "hijos": [
                                                                                                                         {
-                                                                                                                          "valor": "Varicose veins",
+                                                                                                                          "valor": "Dimorphic hemmorhoids(piles)",
                                                                                                                           "arista": 1,
-                                                                                                                          "padre": "cramps",
+                                                                                                                          "padre": "pain_during_bowel_movements",
                                                                                                                           "hijos": []
                                                                                                                         },
                                                                                                                         {
-                                                                                                                          "valor": "muscle_weakness",
+                                                                                                                          "valor": "neck_pain",
                                                                                                                           "arista": 0,
-                                                                                                                          "padre": "cramps",
+                                                                                                                          "padre": "pain_during_bowel_movements",
                                                                                                                           "hijos": [
                                                                                                                             {
-                                                                                                                              "valor": "Arthritis",
-                                                                                                                              "arista": 1,
-                                                                                                                              "padre": "muscle_weakness",
-                                                                                                                              "hijos": []
-                                                                                                                            },
-                                                                                                                            {
-                                                                                                                              "valor": "stiff_neck",
+                                                                                                                              "valor": "cramps",
                                                                                                                               "arista": 0,
-                                                                                                                              "padre": "muscle_weakness",
+                                                                                                                              "padre": "neck_pain",
                                                                                                                               "hijos": [
                                                                                                                                 {
-                                                                                                                                  "valor": "Arthritis",
+                                                                                                                                  "valor": "Varicose veins",
                                                                                                                                   "arista": 1,
-                                                                                                                                  "padre": "stiff_neck",
+                                                                                                                                  "padre": "cramps",
                                                                                                                                   "hijos": []
                                                                                                                                 },
                                                                                                                                 {
-                                                                                                                                  "valor": "bladder_discomfort",
+                                                                                                                                  "valor": "swollen_extremeties",
                                                                                                                                   "arista": 0,
-                                                                                                                                  "padre": "stiff_neck",
+                                                                                                                                  "padre": "cramps",
                                                                                                                                   "hijos": [
                                                                                                                                     {
-                                                                                                                                      "valor": "Acne",
+                                                                                                                                      "valor": "muscle_weakness",
                                                                                                                                       "arista": 0,
-                                                                                                                                      "padre": "bladder_discomfort",
-                                                                                                                                      "hijos": []
-                                                                                                                                    },
-                                                                                                                                    {
-                                                                                                                                      "valor": "Urinary tract infection",
-                                                                                                                                      "arista": 1,
-                                                                                                                                      "padre": "bladder_discomfort",
-                                                                                                                                      "hijos": []
+                                                                                                                                      "padre": "swollen_extremeties",
+                                                                                                                                      "hijos": [
+                                                                                                                                        {
+                                                                                                                                          "valor": "Arthritis",
+                                                                                                                                          "arista": 1,
+                                                                                                                                          "padre": "muscle_weakness",
+                                                                                                                                          "hijos": []
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                          "valor": "stiff_neck",
+                                                                                                                                          "arista": 0,
+                                                                                                                                          "padre": "muscle_weakness",
+                                                                                                                                          "hijos": [
+                                                                                                                                            {
+                                                                                                                                              "valor": "Arthritis",
+                                                                                                                                              "arista": 1,
+                                                                                                                                              "padre": "stiff_neck",
+                                                                                                                                              "hijos": []
+                                                                                                                                            },
+                                                                                                                                            {
+                                                                                                                                              "valor": "bladder_discomfort",
+                                                                                                                                              "arista": 0,
+                                                                                                                                              "padre": "stiff_neck",
+                                                                                                                                              "hijos": [
+                                                                                                                                                {
+                                                                                                                                                  "valor": "Acne",
+                                                                                                                                                  "arista": 0,
+                                                                                                                                                  "padre": "bladder_discomfort",
+                                                                                                                                                  "hijos": []
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                  "valor": "Urinary tract infection",
+                                                                                                                                                  "arista": 1,
+                                                                                                                                                  "padre": "bladder_discomfort",
+                                                                                                                                                  "hijos": []
+                                                                                                                                                }
+                                                                                                                                              ]
+                                                                                                                                            }
+                                                                                                                                          ]
+                                                                                                                                        }
+                                                                                                                                      ]
                                                                                                                                     }
                                                                                                                                   ]
                                                                                                                                 }
                                                                                                                               ]
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                              "valor": "Osteoarthristis",
+                                                                                                                              "arista": 1,
+                                                                                                                              "padre": "neck_pain",
+                                                                                                                              "hijos": []
                                                                                                                             }
                                                                                                                           ]
                                                                                                                         }
                                                                                                                       ]
-                                                                                                                    },
-                                                                                                                    {
-                                                                                                                      "valor": "Osteoarthristis",
-                                                                                                                      "arista": 1,
-                                                                                                                      "padre": "neck_pain",
-                                                                                                                      "hijos": []
                                                                                                                     }
                                                                                                                   ]
                                                                                                                 }
@@ -1395,71 +1584,84 @@
                               "padre": "vomiting",
                               "hijos": [
                                 {
-                                  "valor": "high_fever",
+                                  "valor": "patches_in_throat",
                                   "arista": 0,
                                   "padre": "fatigue",
                                   "hijos": [
                                     {
-                                      "valor": "yellowish_skin",
+                                      "valor": "high_fever",
                                       "arista": 0,
-                                      "padre": "high_fever",
+                                      "padre": "mood_swings",
                                       "hijos": [
                                         {
-                                          "valor": "dark_urine",
-                                          "arista": 1,
-                                          "padre": "yellowish_skin",
+                                          "valor": "yellowish_skin",
+                                          "arista": 0,
+                                          "padre": "high_fever",
                                           "hijos": [
                                             {
-                                              "valor": "nausea",
+                                              "valor": "dark_urine",
                                               "arista": 1,
-                                              "padre": "dark_urine",
+                                              "padre": "yellowish_skin",
                                               "hijos": [
                                                 {
-                                                  "valor": "loss_of_appetite",
+                                                  "valor": "nausea",
                                                   "arista": 1,
-                                                  "padre": "nausea",
+                                                  "padre": "dark_urine",
                                                   "hijos": [
                                                     {
-                                                      "valor": "abdominal_pain",
+                                                      "valor": "loss_of_appetite",
                                                       "arista": 1,
-                                                      "padre": "loss_of_appetite",
+                                                      "padre": "nausea",
                                                       "hijos": [
                                                         {
-                                                          "valor": "diarrhoea",
+                                                          "valor": "abdominal_pain",
                                                           "arista": 1,
-                                                          "padre": "abdominal_pain",
+                                                          "padre": "loss_of_appetite",
                                                           "hijos": [
                                                             {
-                                                              "valor": "hepatitis A",
+                                                              "valor": "diarrhoea",
                                                               "arista": 1,
-                                                              "padre": "diarrhoea",
-                                                              "hijos": []
-                                                            },
-                                                            {
-                                                              "valor": "mild_fever",
-                                                              "arista": 0,
-                                                              "padre": "diarrhoea",
+                                                              "padre": "abdominal_pain",
                                                               "hijos": [
                                                                 {
                                                                   "valor": "hepatitis A",
                                                                   "arista": 1,
-                                                                  "padre": "mild_fever",
+                                                                  "padre": "diarrhoea",
                                                                   "hijos": []
                                                                 },
                                                                 {
-                                                                  "valor": "Hepatitis D",
+                                                                  "valor": "mild_fever",
                                                                   "arista": 0,
-                                                                  "padre": "mild_fever",
-                                                                  "hijos": []
+                                                                  "padre": "diarrhoea",
+                                                                  "hijos": [
+                                                                    {
+                                                                      "valor": "hepatitis A",
+                                                                      "arista": 1,
+                                                                      "padre": "mild_fever",
+                                                                      "hijos": []
+                                                                    },
+                                                                    {
+                                                                      "valor": "Hepatitis D",
+                                                                      "arista": 0,
+                                                                      "padre": "mild_fever",
+                                                                      "hijos": []
+                                                                    }
+                                                                  ]
                                                                 }
                                                               ]
+                                                            },
+                                                            {
+                                                              "valor": "hepatitis A",
+                                                              "arista": 0,
+                                                              "padre": "abdominal_pain",
+                                                              "hijos": []
                                                             }
                                                           ]
                                                         },
                                                         {
                                                           "valor": "hepatitis A",
                                                           "arista": 0,
-                                                          "padre": "abdominal_pain",
+                                                          "padre": "loss_of_appetite",
                                                           "hijos": []
                                                         }
                                                       ]
@@ -1467,7 +1669,7 @@
                                                     {
                                                       "valor": "hepatitis A",
                                                       "arista": 0,
-                                                      "padre": "loss_of_appetite",
+                                                      "padre": "nausea",
                                                       "hijos": []
                                                     }
                                                   ]
@@ -1475,7 +1677,7 @@
                                                 {
                                                   "valor": "hepatitis A",
                                                   "arista": 0,
-                                                  "padre": "nausea",
+                                                  "padre": "dark_urine",
                                                   "hijos": []
                                                 }
                                               ]
@@ -1483,77 +1685,84 @@
                                             {
                                               "valor": "hepatitis A",
                                               "arista": 0,
-                                              "padre": "dark_urine",
+                                              "padre": "yellowish_skin",
                                               "hijos": []
                                             }
                                           ]
                                         },
                                         {
-                                          "valor": "hepatitis A",
-                                          "arista": 0,
-                                          "padre": "yellowish_skin",
+                                          "valor": "Hepatitis E",
+                                          "arista": 1,
+                                          "padre": "high_fever",
                                           "hijos": []
                                         }
                                       ]
-                                    },
-                                    {
-                                      "valor": "Hepatitis E",
-                                      "arista": 1,
-                                      "padre": "high_fever",
-                                      "hijos": []
                                     }
                                   ]
                                 },
                                 {
-                                  "valor": "high_fever",
+                                  "valor": "patches_in_throat",
                                   "arista": 1,
                                   "padre": "fatigue",
                                   "hijos": [
                                     {
-                                      "valor": "yellowish_skin",
+                                      "valor": "high_fever",
                                       "arista": 0,
-                                      "padre": "high_fever",
+                                      "padre": "mood_swings",
                                       "hijos": [
                                         {
-                                          "valor": "dark_urine",
-                                          "arista": 1,
-                                          "padre": "yellowish_skin",
+                                          "valor": "yellowish_skin",
+                                          "arista": 0,
+                                          "padre": "high_fever",
                                           "hijos": [
                                             {
-                                              "valor": "nausea",
+                                              "valor": "dark_urine",
                                               "arista": 1,
-                                              "padre": "dark_urine",
+                                              "padre": "yellowish_skin",
                                               "hijos": [
                                                 {
-                                                  "valor": "loss_of_appetite",
+                                                  "valor": "nausea",
                                                   "arista": 1,
-                                                  "padre": "nausea",
+                                                  "padre": "dark_urine",
                                                   "hijos": [
                                                     {
-                                                      "valor": "abdominal_pain",
+                                                      "valor": "loss_of_appetite",
                                                       "arista": 1,
-                                                      "padre": "loss_of_appetite",
+                                                      "padre": "nausea",
                                                       "hijos": [
                                                         {
-                                                          "valor": "yellowing_of_eyes",
+                                                          "valor": "abdominal_pain",
                                                           "arista": 1,
-                                                          "padre": "abdominal_pain",
+                                                          "padre": "loss_of_appetite",
                                                           "hijos": [
                                                             {
-                                                              "valor": "acute_liver_failure",
+                                                              "valor": "yellowing_of_eyes",
                                                               "arista": 1,
-                                                              "padre": "yellowing_of_eyes",
+                                                              "padre": "abdominal_pain",
                                                               "hijos": [
+                                                                {
+                                                                  "valor": "acute_liver_failure",
+                                                                  "arista": 1,
+                                                                  "padre": "yellowing_of_eyes",
+                                                                  "hijos": [
+                                                                    {
+                                                                      "valor": "Hepatitis D",
+                                                                      "arista": 0,
+                                                                      "padre": "acute_liver_failure",
+                                                                      "hijos": []
+                                                                    },
+                                                                    {
+                                                                      "valor": "Hepatitis E",
+                                                                      "arista": 1,
+                                                                      "padre": "acute_liver_failure",
+                                                                      "hijos": []
+                                                                    }
+                                                                  ]
+                                                                },
                                                                 {
                                                                   "valor": "Hepatitis D",
                                                                   "arista": 0,
-                                                                  "padre": "acute_liver_failure",
-                                                                  "hijos": []
-                                                                },
-                                                                {
-                                                                  "valor": "Hepatitis E",
-                                                                  "arista": 1,
-                                                                  "padre": "acute_liver_failure",
+                                                                  "padre": "yellowing_of_eyes",
                                                                   "hijos": []
                                                                 }
                                                               ]
@@ -1561,7 +1770,7 @@
                                                             {
                                                               "valor": "Hepatitis D",
                                                               "arista": 0,
-                                                              "padre": "yellowing_of_eyes",
+                                                              "padre": "abdominal_pain",
                                                               "hijos": []
                                                             }
                                                           ]
@@ -1569,7 +1778,7 @@
                                                         {
                                                           "valor": "Hepatitis D",
                                                           "arista": 0,
-                                                          "padre": "abdominal_pain",
+                                                          "padre": "loss_of_appetite",
                                                           "hijos": []
                                                         }
                                                       ]
@@ -1577,7 +1786,7 @@
                                                     {
                                                       "valor": "Hepatitis D",
                                                       "arista": 0,
-                                                      "padre": "loss_of_appetite",
+                                                      "padre": "nausea",
                                                       "hijos": []
                                                     }
                                                   ]
@@ -1585,7 +1794,7 @@
                                                 {
                                                   "valor": "Hepatitis D",
                                                   "arista": 0,
-                                                  "padre": "nausea",
+                                                  "padre": "dark_urine",
                                                   "hijos": []
                                                 }
                                               ]
@@ -1593,24 +1802,18 @@
                                             {
                                               "valor": "Hepatitis D",
                                               "arista": 0,
-                                              "padre": "dark_urine",
+                                              "padre": "yellowish_skin",
                                               "hijos": []
                                             }
                                           ]
                                         },
                                         {
-                                          "valor": "Hepatitis D",
-                                          "arista": 0,
-                                          "padre": "yellowish_skin",
+                                          "valor": "Hepatitis E",
+                                          "arista": 1,
+                                          "padre": "high_fever",
                                           "hijos": []
                                         }
                                       ]
-                                    },
-                                    {
-                                      "valor": "Hepatitis E",
-                                      "arista": 1,
-                                      "padre": "high_fever",
-                                      "hijos": []
                                     }
                                   ]
                                 }
@@ -1622,43 +1825,85 @@
                               "padre": "vomiting",
                               "hijos": [
                                 {
-                                  "valor": "yellowish_skin",
+                                  "valor": "patches_in_throat",
                                   "arista": 0,
                                   "padre": "fatigue",
                                   "hijos": [
                                     {
-                                      "valor": "hepatitis A",
-                                      "arista": 1,
-                                      "padre": "yellowish_skin",
-                                      "hijos": []
-                                    },
-                                    {
-                                      "valor": "neck_pain",
+                                      "valor": "indigestion",
                                       "arista": 0,
-                                      "padre": "yellowish_skin",
+                                      "padre": "patches_in_throat",
                                       "hijos": [
                                         {
-                                          "valor": "Osteoarthristis",
-                                          "arista": 1,
-                                          "padre": "neck_pain",
-                                          "hijos": []
-                                        },
-                                        {
-                                          "valor": "knee_pain",
+                                          "valor": "yellowish_skin",
                                           "arista": 0,
-                                          "padre": "neck_pain",
+                                          "padre": "sunken_eyes",
                                           "hijos": [
                                             {
-                                              "valor": "Osteoarthristis",
+                                              "valor": "hepatitis A",
                                               "arista": 1,
-                                              "padre": "knee_pain",
+                                              "padre": "yellowish_skin",
                                               "hijos": []
                                             },
                                             {
-                                              "valor": "Psoriasis",
+                                              "valor": "diarrhoea",
                                               "arista": 0,
-                                              "padre": "knee_pain",
-                                              "hijos": []
+                                              "padre": "yellowish_skin",
+                                              "hijos": [
+                                                {
+                                                  "valor": "malaise",
+                                                  "arista": 0,
+                                                  "padre": "diarrhoea",
+                                                  "hijos": [
+                                                    {
+                                                      "valor": "chest_pain",
+                                                      "arista": 0,
+                                                      "padre": "malaise",
+                                                      "hijos": [
+                                                        {
+                                                          "valor": "neck_pain",
+                                                          "arista": 0,
+                                                          "padre": "chest_pain",
+                                                          "hijos": [
+                                                            {
+                                                              "valor": "Osteoarthristis",
+                                                              "arista": 1,
+                                                              "padre": "neck_pain",
+                                                              "hijos": []
+                                                            },
+                                                            {
+                                                              "valor": "enlarged_thyroid",
+                                                              "arista": 0,
+                                                              "padre": "neck_pain",
+                                                              "hijos": [
+                                                                {
+                                                                  "valor": "knee_pain",
+                                                                  "arista": 0,
+                                                                  "padre": "enlarged_thyroid",
+                                                                  "hijos": [
+                                                                    {
+                                                                      "valor": "Osteoarthristis",
+                                                                      "arista": 1,
+                                                                      "padre": "knee_pain",
+                                                                      "hijos": []
+                                                                    },
+                                                                    {
+                                                                      "valor": "Psoriasis",
+                                                                      "arista": 0,
+                                                                      "padre": "knee_pain",
+                                                                      "hijos": []
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
@@ -1667,21 +1912,28 @@
                                   ]
                                 },
                                 {
-                                  "valor": "high_fever",
+                                  "valor": "patches_in_throat",
                                   "arista": 1,
                                   "padre": "fatigue",
                                   "hijos": [
                                     {
-                                      "valor": "Hepatitis D",
+                                      "valor": "high_fever",
                                       "arista": 0,
-                                      "padre": "high_fever",
-                                      "hijos": []
-                                    },
-                                    {
-                                      "valor": "Hepatitis E",
-                                      "arista": 1,
-                                      "padre": "high_fever",
-                                      "hijos": []
+                                      "padre": "mood_swings",
+                                      "hijos": [
+                                        {
+                                          "valor": "Hepatitis D",
+                                          "arista": 0,
+                                          "padre": "high_fever",
+                                          "hijos": []
+                                        },
+                                        {
+                                          "valor": "Hepatitis E",
+                                          "arista": 1,
+                                          "padre": "high_fever",
+                                          "hijos": []
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -1765,21 +2017,28 @@
                               "padre": "vomiting",
                               "hijos": [
                                 {
-                                  "valor": "cough",
+                                  "valor": "patches_in_throat",
                                   "arista": 0,
                                   "padre": "fatigue",
                                   "hijos": [
                                     {
-                                      "valor": "Malaria",
+                                      "valor": "cough",
                                       "arista": 0,
-                                      "padre": "cough",
-                                      "hijos": []
-                                    },
-                                    {
-                                      "valor": "Pneumonia",
-                                      "arista": 1,
-                                      "padre": "cough",
-                                      "hijos": []
+                                      "padre": "mood_swings",
+                                      "hijos": [
+                                        {
+                                          "valor": "Malaria",
+                                          "arista": 0,
+                                          "padre": "cough",
+                                          "hijos": []
+                                        },
+                                        {
+                                          "valor": "Pneumonia",
+                                          "arista": 1,
+                                          "padre": "cough",
+                                          "hijos": []
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
