@@ -61,6 +61,10 @@ dc = Doctor(ic.root)
 # print(dc.preguntar())
 
 
+def index(request):
+    return render(request, "build/index.html")
+
+
 @api_view(['GET'])
 def comenzarJuego(request):
     if request.method == 'GET':

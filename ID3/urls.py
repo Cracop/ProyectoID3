@@ -21,6 +21,7 @@ from django.conf.urls import url
 from Conector import views as conector_views
 
 urlpatterns = [
+    path("", conector_views.index),
     url(r'^id3/$', conector_views.comenzarJuego),
     url(r'^id3/(?P<ans>[0-2]+)/$',
         conector_views.sendAns),

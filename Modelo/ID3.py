@@ -21,7 +21,6 @@ class Nodo:
         for hijo in self.hijos:
             if hijo.arista == arista:
                 return hijo
-        raise
 
 
 class ArbolID3:
